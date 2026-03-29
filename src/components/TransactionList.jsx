@@ -5,6 +5,7 @@ function TransactionList({
     filteredTransactions,
     onFilterTypeChange,
     onFilterCategoryChange,
+    onDeleteTransaction,
 }) {
     return (
         <div className="transactions">
@@ -30,9 +31,15 @@ function TransactionList({
                         <th>Description</th>
                         <th>Category</th>
                         <th>Amount</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {filteredTransactions.length === 0 && (
+                        <tr>
+                            <td colSpan="5" className="empty-state">No transactions match your current filters.</td>
+                        </tr>
+                    )}
                     {filteredTransactions.map(t => (
                         <tr key={t.id}>
                             <td>{t.date}</td>
@@ -40,6 +47,15 @@ function TransactionList({
                             <td>{t.category}</td>
                             <td className={t.type === "income" ? "income-amount" : "expense-amount"}>
                                 {t.type === "income" ? "+" : "-"}${t.amount}
+                            </td>
+                            <td>
+                                <button
+                                    type="button"
+                                    className="delete-btn"
+                                    onClick={() => onDeleteTransaction(t.id)}
+                                >
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     ))}

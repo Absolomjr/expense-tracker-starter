@@ -57,6 +57,15 @@ function App() {
     setCategory("food");
   };
 
+  const handleDeleteTransaction = (transactionId) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this transaction?");
+    if (!shouldDelete) {
+      return;
+    }
+
+    setTransactions(transactions.filter(t => t.id !== transactionId));
+  };
+
 
   return (
     <div className="app">
@@ -85,6 +94,7 @@ function App() {
         filteredTransactions={filteredTransactions}
         onFilterTypeChange={(e) => setFilterType(e.target.value)}
         onFilterCategoryChange={(e) => setFilterCategory(e.target.value)}
+        onDeleteTransaction={handleDeleteTransaction}
       />
     </div>
   );
