@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
+
+// functions
 function App() {
   const [transactions, setTransactions] = useState([
     { id: 1, description: "Salary", amount: "5000", type: "income", category: "salary", date: "2025-01-01" },
