@@ -17,7 +17,7 @@ Track income and expenses, filter transactions, review financial totals at a gla
 
 ## Tech Stack
 
-- React 19
+- React 
 - Vite
 - ESLint
 - CSS (custom styling, responsive layout)
